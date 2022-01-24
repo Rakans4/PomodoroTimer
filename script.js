@@ -9,7 +9,26 @@ startBtn.addEventListener('click', startTaskTimer);
 
 resetBtn.addEventListener('click', resetTimer);
 
+startBtn.addEventListener('mousedown', function(){
+    startBtn.classList.add('selected');
+});
+
+startBtn.addEventListener('mouseup', function(){
+    startBtn.classList.remove('selected');
+});
+
+resetBtn.addEventListener('mousedown', function(){
+    resetBtn.classList.add('selected');
+});
+
+resetBtn.addEventListener('mouseup', function(){
+    resetBtn.classList.remove('selected');
+});
+
 function resetTimer() {
+
+    // startBtn.classList.remove('selected');
+    
 
     clearInterval(myInterval);
 
@@ -22,6 +41,9 @@ function resetTimer() {
 var myInterval;
 
 function startTaskTimer() {
+    clearInterval(myInterval);
+    // startBtn.classList.add('selected');
+    // resetBtn.classList.remove('selected');
     console.log('button clicked');
     var timer = addTime(new Date(), 25).getTime();
     myInterval = setInterval(function() {
