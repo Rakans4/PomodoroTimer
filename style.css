@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    --font-color: #eee;
 }
 
 .container {
@@ -9,8 +10,7 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
-    background: #efd1de;
-    color: #555;
+    color: var(--font-color);
 }
 
 .container-pomodoro {
@@ -20,12 +20,11 @@
     flex-direction: column;
     width: 50vw; 
     height: 50vh;
+    
+    background: #3e4d68;
+    border-radius: 50px;
     margin-top: 4.5em;
     padding: 24px;
-    border-radius: 50px;
-    background: #efd1de;
-    box-shadow: inset 35px 35px 70px #e3c7d3,
-                inset -35px -35px 70px #fbdbe9;
 }
 
 .buttons-container {
@@ -40,17 +39,18 @@
     border: none;
     cursor: pointer;
     text-decoration: none;
-    border-radius: 21px;
-background: linear-gradient(145deg, #ffe0ee, #d7bcc8);
-box-shadow:  15px 15px 30px #dcc0cc,
-             -15px -15px 30px #ffe2f0;
+    color: var(--font-color);
+    border-radius: 50px;
+    background: linear-gradient(145deg, #42526f, #38455e);
+    box-shadow:  18px 18px 35px #354158,
+                -18px -18px 35px #475978;
 }
 
 .selected {
-    border-radius: 21px;
-background: linear-gradient(145deg, #d7bcc8, #ffe0ee);
-box-shadow:  15px 15px 30px #dcc0cc,
-             -15px -15px 30px #ffe2f0;
+    border-radius: 50px;
+    background: linear-gradient(145deg, #38455e, #42526f);
+    box-shadow:  18px 18px 35px #354158,
+                -18px -18px 35px #475978;
 }
 
 #timer {

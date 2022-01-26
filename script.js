@@ -2,10 +2,18 @@ const startBtn = document.getElementById('start');
 const resetBtn = document.getElementById('reset');
 const textMinutes = document.getElementById('minutes');
 const textSeconds = document.getElementById('seconds');
+const header = document.getElementById('header');
+
+let taskTime = '25';
+let breakTime = '05';
+let isTaskTime = true;
 
 
+textMinutes.innerHTML = isTaskTime ? taskTime : breakTime;
+textSeconds.innerHTML = '00';
 
-startBtn.addEventListener('click', startTaskTimer);
+
+startBtn.addEventListener('click', startTimer);
 
 resetBtn.addEventListener('click', resetTimer);
 
@@ -27,12 +35,9 @@ resetBtn.addEventListener('mouseup', function(){
 
 function resetTimer() {
 
-    // startBtn.classList.remove('selected');
-    
-
     clearInterval(myInterval);
 
-    textMinutes.innerHTML = '25';
+    textMinutes.innerHTML = isTaskTime ? taskTime : breakTime;
     textSeconds.innerHTML = '00';
 
 
@@ -40,31 +45,28 @@ function resetTimer() {
 
 var myInterval;
 
-function startTaskTimer() {
+function startTimer() {
+
     clearInterval(myInterval);
-    // startBtn.classList.add('selected');
-    // resetBtn.classList.remove('selected');
-    console.log('button clicked');
-    var timer = addTime(new Date(), 25).getTime();
+    
+    var timer = addTime(new Date(), isTaskTime ? taskTime : breakTime).getTime();
+    
     myInterval = setInterval(function() {
-        console.log('timer started');
+        
         var now = new Date().getTime();
-        console.log('now '+now);
-        
-            
         var distance = timer - now;
-
-        console.log('d' +distance);
-        
-
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        console.log(minutes +' - '+ seconds);
-        textMinutes.innerHTML = minutes;
-        textSeconds.innerHTML = seconds;
+
+        textMinutes.innerHTML = String(minutes).length == 1? '0'.concat(minutes) : minutes;
+        textSeconds.innerHTML = String(seconds).length == 1? '0'.concat(seconds) : seconds;
 
         if (distance < 0) {
             clearInterval(myInterval);
+            textMinutes.innerHTML = '00';
+            textSeconds.innerHTML = '00';
+
+            header.innerHTML = 'Take a break';
         }
 
     }, 1000);
@@ -77,4 +79,11 @@ function timer() {
 
 function addTime (date, minutes) {
     return new Date(date.getTime() + minutes*60000);
+}
+
+function reset() {
+    clearInterval(myInterval);
+    textMinutes.innerHTML = '00';
+    textSeconds.innerHTML = '00';
+    header.innerHTML = isTaskTime? 'Time to focus':'Take a break';
 }
