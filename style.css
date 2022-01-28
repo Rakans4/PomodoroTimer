@@ -7,7 +7,8 @@
 
 .container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
     width: 100vw;
     color: var(--font-color);
@@ -23,7 +24,7 @@
     
     background: #3e4d68;
     border-radius: 50px;
-    margin-top: 4.5em;
+    margin-top: 3.5em;
     padding: 24px;
 }
 
@@ -33,9 +34,17 @@
     justify-content: space-around;
 }
 
+.timer-type-container {
+    display: flex;
+    justify-content: space-around;
+    width: 50vw; 
+    margin-top: 4.5em;
+    padding: 24px;
+}
+
 .btn {
     height: 4em;
-    width: 16em;
+    width: 40%;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -44,6 +53,26 @@
     background: linear-gradient(145deg, #42526f, #38455e);
     box-shadow:  18px 18px 35px #354158,
                 -18px -18px 35px #475978;
+}
+
+.timer-type-btn {
+    height: 4em;
+    width: 45%;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #555;
+    border-radius: 39px;
+background: linear-gradient(145deg, #ffffff, #e6e6e6);
+box-shadow:  25px 25px 50px #d4d4d4,
+             -25px -25px 50px #ffffff;
+}
+
+.timer-type-btn-selected {
+    border-radius: 39px;
+background: linear-gradient(145deg, #e6e6e6, #ffffff);
+box-shadow:  25px 25px 50px #d4d4d4,
+             -25px -25px 50px #ffffff;
 }
 
 .selected {
@@ -55,4 +84,19 @@
 
 #timer {
     font-size: 28pt;
+}
+
+
+@media (max-width: 800px) {
+    .container-pomodoro{
+        width: 80vw;
+    }
+    .timer-type-container{
+        flex-direction: column;
+        width: 80vw;
+        height: 25vh;
+    }
+    .timer-type-btn{
+        width: 100%;
+    }
 }

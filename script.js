@@ -39,7 +39,8 @@ function resetTimer() {
 
     textMinutes.innerHTML = isTaskTime ? taskTime : breakTime;
     textSeconds.innerHTML = '00';
-
+    
+    header.innerHTML = isTaskTime? 'Time to focus':'Take a break';
 
 }
 
@@ -62,11 +63,8 @@ function startTimer() {
         textSeconds.innerHTML = String(seconds).length == 1? '0'.concat(seconds) : seconds;
 
         if (distance < 0) {
-            clearInterval(myInterval);
-            textMinutes.innerHTML = '00';
-            textSeconds.innerHTML = '00';
-
-            header.innerHTML = 'Take a break';
+            isTaskTime = !isTaskTime;
+            resetTimer();
         }
 
     }, 1000);
@@ -81,9 +79,3 @@ function addTime (date, minutes) {
     return new Date(date.getTime() + minutes*60000);
 }
 
-function reset() {
-    clearInterval(myInterval);
-    textMinutes.innerHTML = '00';
-    textSeconds.innerHTML = '00';
-    header.innerHTML = isTaskTime? 'Time to focus':'Take a break';
-}
