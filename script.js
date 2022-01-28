@@ -3,6 +3,8 @@ const resetBtn = document.getElementById('reset');
 const textMinutes = document.getElementById('minutes');
 const textSeconds = document.getElementById('seconds');
 const header = document.getElementById('header');
+const taskBtn = document.getElementById('task');
+const breakBtn = document.getElementById('break');
 
 let taskTime = '25';
 let breakTime = '05';
@@ -12,6 +14,19 @@ let isTaskTime = true;
 textMinutes.innerHTML = isTaskTime ? taskTime : breakTime;
 textSeconds.innerHTML = '00';
 
+taskBtn.addEventListener('click', function(){
+    isTaskTime = true; 
+    resetTimer();
+    taskBtn.classList.add('timer-type-btn-selected');
+    breakBtn.classList.remove('timer-type-btn-selected');
+});
+
+breakBtn.addEventListener('click', function(){
+    isTaskTime = false; 
+    resetTimer();
+    taskBtn.classList.remove('timer-type-btn-selected');
+    breakBtn.classList.add('timer-type-btn-selected');
+});
 
 startBtn.addEventListener('click', startTimer);
 
@@ -64,6 +79,12 @@ function startTimer() {
 
         if (distance < 0) {
             isTaskTime = !isTaskTime;
+
+            if(isTaskTime) {
+            taskBtn.classList.add('timer-type-btn-selected');
+            breakBtn.classList.remove('timer-type-btn-selected');}else{
+            breakBtn.classList.add('timer-type-btn-selected');
+            taskBtn.classList.remove('timer-type-btn-selected');}
             resetTimer();
         }
 
@@ -79,3 +100,13 @@ function addTime (date, minutes) {
     return new Date(date.getTime() + minutes*60000);
 }
 
+
+function selectTask(){
+    if(type == 'task'){
+        isTaskTime = true;
+    } else if(type == 'break'){
+        isTaskTime = false;
+    }
+
+    resetTimer();
+}
