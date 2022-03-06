@@ -1,3 +1,6 @@
 # PomodoroTimer
+This is a simple Pomodoro Timer using plain HTML, CSS and Javascript.
 
-https://rakans4.github.io/PomodoroTimer/
+
+
+You can try it [_here_](https://rakans4.github.io/PomodoroTimer/)!
